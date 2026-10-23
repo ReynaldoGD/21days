@@ -66,9 +66,27 @@ footer{text-align:center;padding:20px;color:#8e8175;font-size:.72rem;letter-spac
 @media(max-width:760px){.corner-note{display:none}.hero{padding:52px 0 38px}.timer{gap:7px}.timebox{padding:13px 4px 10px}.unit{letter-spacing:.08em;font-size:.62rem}.messages-layout{grid-template-columns:1fr;gap:22px}.day-grid{grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}.day{min-height:67px}.day .dnum{font-size:1.2rem}.message-card{min-height:0}.final-grid{grid-template-columns:1fr;gap:12px}.envelope{font-size:48px}.final-grid .final-side:last-child{display:none}}
 @media(max-width:390px){.day-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.num{font-size:2rem}.kicker{letter-spacing:.22em}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+
+/* Acceso secreto */
+.secret-gate{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at center,#21150d 0%,#0b0908 58%,#050505 100%);color:#f6eadb;font-family:inherit}
+.secret-gate[hidden]{display:none}
+.secret-box{width:min(92vw,460px);text-align:center;padding:38px 28px;border:1px solid rgba(216,158,72,.45);border-radius:22px;background:rgba(20,15,12,.82);box-shadow:0 22px 70px rgba(0,0,0,.55)}
+.secret-heart{font-size:34px;color:#d89e48;margin-bottom:10px}.secret-box h2{font-size:clamp(1.7rem,6vw,2.5rem);font-style:italic;margin:0 0 12px}.secret-box p{color:#cbbdaf;line-height:1.65;margin:0 0 20px}.secret-input{width:100%;box-sizing:border-box;padding:14px 16px;border-radius:12px;border:1px solid rgba(216,158,72,.45);background:#0c0a09;color:#f6eadb;text-align:center;font-size:1rem;outline:none}.secret-input:focus{border-color:#d89e48;box-shadow:0 0 0 3px rgba(216,158,72,.12)}.secret-button{margin-top:12px;width:100%;padding:13px 18px;border:1px solid #d89e48;border-radius:12px;background:#d89e48;color:#120d09;font-weight:700;cursor:pointer}.secret-error{min-height:24px;margin-top:12px!important;color:#e7b16b!important;font-size:.92rem}.secret-welcome{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:9998;width:min(88vw,620px);padding:13px 18px;border:1px solid rgba(216,158,72,.35);border-radius:14px;background:rgba(15,11,9,.95);color:#f6eadb;text-align:center;box-shadow:0 10px 35px rgba(0,0,0,.38);animation:secretFade 5s forwards}@keyframes secretFade{0%,75%{opacity:1}100%{opacity:0;visibility:hidden}}
 </style>
 </head>
 <body>
+
+<div class="secret-gate" id="secretGate">
+  <div class="secret-box">
+    <div class="secret-heart">♡</div>
+    <h2>Esto no es para cualquiera...</h2>
+    <p>Si llegaste hasta aquí, ya tienes la primera pista. Hay algo esperando por ti, pero primero tendrás que recordar el momento en que todo cambió. Hay fechas que se anotan en un calendario... y otras que se quedan con nosotros. ¿Recuerdas la nuestra?</p>
+    <input class="secret-input" id="secretInput" type="password" placeholder="DD/MM/AAAA" autocomplete="off" aria-label="Clave secreta">
+    <button class="secret-button" id="secretButton" type="button">Déjame entrar ♡</button>
+    <p class="secret-error" id="secretError"></p>
+  </div>
+</div>
+
 <header class="hero">
   <div class="corner-note left">La vida es más bonita contigo ♡</div>
   <div class="corner-note right">Gracias por existir ♡</div>
@@ -128,19 +146,12 @@ footer{text-align:center;padding:20px;color:#8e8175;font-size:.72rem;letter-spac
     <button class="reveal-btn" id="revealButton" type="button" hidden>♡ Abrir tu carta ♡</button>
     <article class="letter" id="birthdayLetter" hidden>
       <h3>Feliz cumpleaños baby ♡</h3>
-      <p>Hoy finalmente llegamos al día para el que preparé todo esto.</p>
-      <p>Durante 21 días fuiste abriendo poquito a poquito algo que hice pensando en ti. Y ahora que llegaste hasta aquí, quiero dejar a un lado la cuenta regresiva y hablarte simplemente desde mí.</p>
-      <p>Hay personas que llegan a nuestras vidas sin hacer demasiado ruido y, cuando vienes a darte cuenta, ya ocupan un lugar especial. Contigo siento que pasó algo así. Poco a poco empezaste a aparecer en mis pensamientos, en mis sonrisas, en cosas que quería contarle a alguien... y ese alguien muchas veces terminaste siendo tú.</p>
-      <p>No sé qué nos espera más adelante y tampoco quiero pretender tener todas las respuestas. Lo que sí sé es que me gusta lo que hemos construido, me gusta tenerte cerca y me hace ilusión pensar en todo lo que todavía nos falta por vivir.</p>
-      <p>Quiero verte cumplir sueños. Quiero verte riéndote muchísimo. Quiero estar para algunas de tus victorias y también poder abrazarte en alguno de esos días en los que las cosas no salgan tan bien.</p>
-      <p>Y sobre todo, quiero que nunca olvides algo:</p>
-      <p><strong>Eres muy especial para mí.</strong></p>
-      <p>Hoy deseo que la vida te devuelva un poquito de toda esa luz que llevas contigo. Que este nuevo año te traiga momentos increíbles, tranquilidad, aventuras, oportunidades y muchísimas razones para sonreír.</p>
-      <p>Y egoístamente, también voy a pedir una cosita para mí:</p>
-      <p>Que me permita seguir estando ahí para verlo. ♡</p>
-      <p><strong>Feliz cumpleaños, baby.</strong></p>
-      <p>Espero que cuando recuerdes este cumpleaños, también recuerdes que hubo alguien que decidió contar 21 días solamente para verte llegar hasta aquí.</p>
-      <p class="signature">Con muchísimo cariño,<br>Reynaldo ♡</p>
+      <p>Hoy es tu día, pero la verdad es que celebrarte no debería limitarse a una sola fecha. Hay personas que hacen más bonitos los días sin siquiera intentarlo, y tú tienes esa forma especial de hacerlo.</p>
+      <p>Deseo que este nuevo año de vida te regale razones para reír con ganas, tranquilidad para tu corazón, sueños que se cumplan y sorpresas que te recuerden lo maravillosa que eres. Que nunca te falten personas que te cuiden bonito, momentos que quieras guardar para siempre y fuerzas para ir detrás de todo lo que deseas.</p>
+      <p>Ojalá pudieras verte por un instante con los ojos de quienes te queremos: entenderías por qué tu sonrisa importa, por qué tu felicidad merece celebrarse y por qué tu existencia es un regalo.</p>
+      <p>Gracias por ser tú, por tu manera de iluminar lo cotidiano y por hacer que esta cuenta regresiva tenga un sentido tan bonito. Hoy empieza un nuevo capítulo, y mi deseo más sincero es que esté lleno de amor, aventuras, paz y recuerdos que te hagan sonreír cada vez que vuelvas a ellos.</p>
+      <p>Feliz cumpleaños, baby. Que la vida te abrace tan bonito como tú mereces. ♡</p>
+      <p class="signoff">Con todo mi cariño, siempre. ♡</p>
     </article>
   </div>
 </section>
@@ -148,6 +159,31 @@ footer{text-align:center;padding:20px;color:#8e8175;font-size:.72rem;letter-spac
 <footer>Las mejores cosas merecen su tiempo <span class="spark">♡</span></footer>
 
 <script>
+
+// Pequeño acceso romántico. Es un detalle visual, no un mecanismo de seguridad real.
+const SECRET_KEY = "01/09/2026";
+const secretGate = document.getElementById("secretGate");
+const secretInput = document.getElementById("secretInput");
+const secretButton = document.getElementById("secretButton");
+const secretError = document.getElementById("secretError");
+function unlockSecret(){
+  const value = secretInput.value.trim().toLocaleLowerCase("es");
+  if(value === SECRET_KEY){
+    secretGate.hidden = true;
+    sessionStorage.setItem("secretUnlocked","yes");
+    const welcome=document.createElement("div");
+    welcome.className="secret-welcome";
+    welcome.textContent="Claro que la recordarías. ♡ Esa fecha abrió una historia. Esta vez, abre algo que preparé especialmente para ti.";
+    document.body.appendChild(welcome);
+  } else {
+    secretError.textContent="Esa no es, baby... ♡ Pista: vuelve al día en que dejamos de ser tú y yo por separado y empezamos a ser nosotros.";
+    secretInput.select();
+  }
+}
+if(sessionStorage.getItem("secretUnlocked") === "yes") secretGate.hidden=true;
+secretButton.addEventListener("click",unlockSecret);
+secretInput.addEventListener("keydown",e=>{if(e.key==="Enter") unlockSecret();});
+
 /*
   CONFIGURACIÓN IMPORTANTE:
   Cambia START_AT por la fecha y hora exactas en que quieras iniciar la cuenta regresiva.
@@ -161,27 +197,27 @@ const startTime = new Date(START_AT).getTime();
 const endTime = startTime + DURATION_MS;
 
 const messages = [
-["Quería hacer algo diferente", "Hoy empieza esta pequeña cuenta regresiva que preparé para ti. Quería hacer algo diferente, algo que pudiera recordarte cada día que hay alguien pensando en ti, en tu sonrisa y en lo bonito que es tenerte en mi vida. Faltan 21 días, baby. Y sí, pienso aprovechar cada uno. ♡"],
-["Esa sonrisa tuya", "No sé si te lo digo lo suficiente, pero me encanta verte sonreír. Sobre todo cuando es una sonrisa de esas que te salen sin darte cuenta. Así que si hoy tienes un día complicado, ven aquí y recuerda algo sencillo: hay alguien de este lado de la pantalla que quisiera ser una de las razones de esa sonrisa. ♡"],
-["Pensando en ti", "Es curioso cómo una persona puede aparecer en tu cabeza en cualquier momento del día sin avisar. Una canción, una frase, cualquier tontería... y de repente pienso en ti. Últimamente me pasa más de lo que probablemente debería admitir. ♡"],
-["Hay algo en ti", "No sabría explicarte exactamente qué es. Quizás es tu forma de ser, tu manera de hablar, tus ocurrencias o esa combinación tan tuya de pequeñas cosas. Solo sé que tienes algo que hace que quiera conocerte un poquito más cada día."],
-["Si estuvieras aquí", "Si estuvieras aquí ahora mismo, probablemente no te diría un discurso enorme. Me acercaría a ti, te abrazaría y disfrutaría simplemente de tenerte cerca. Hay momentos en los que las palabras sobran... aunque claramente yo decidí hacerte una página completa. 😂♡"],
-["Me gustas así", "No necesito que seas perfecta. De hecho, probablemente me gustan más esas pequeñas cosas tuyas que tú ni siquiera notas. Tu manera de reaccionar, tus ocurrencias, tus días buenos y hasta cuando tienes tu carácter. Me gustas siendo tú."],
-["Ya pasó una semana", "Siete días ya. Y si llegaste hasta aquí, significa que has pensado en mí al menos una vez al día para venir a desbloquear esto. Así que técnicamente mi plan está funcionando perfectamente. 😌♡"],
-["Quiero que lo sepas", "No sé qué nos traerá el tiempo, pero hay algo que sí tengo claro: quiero disfrutar cada momento bonito que pueda compartir contigo. Sin prisas, sin complicarlo demasiado. Simplemente haciendo recuerdos que algún día podamos mirar y decir: qué bonito fue eso."],
-["Un lugar bonito", "Quiero ser una persona con la que puedas sentirte tranquila. Alguien con quien puedas reír, hablar tonterías, contar lo que te preocupa o simplemente quedarte en silencio sin sentir que tienes que explicar nada. Un lugar bonito también puede ser una persona. ♡"],
-["Te debo un abrazo", "Este mensaje viene con un abrazo pendiente. No uno rápido. Uno de esos abrazos largos en los que por unos segundos se apaga todo lo demás. Lo malo es que esta página todavía no sabe dar abrazos... así que me tocará entregártelo personalmente. ♡"],
-["Algo que admiro de ti", "Quizás tú ves muchas cosas normales cuando te miras, pero desde fuera hay detalles que llaman muchísimo la atención. Tu forma de ser, tu esencia, esa manera tan particular que tienes de ser tú. Y sí, por si todavía no lo habías notado, me gusta bastante esa persona."],
-["Ya vamos por la mitad", "Mira hasta dónde llegamos. Y mientras tú has ido abriendo un mensaje cada día, yo sabía desde el principio todo lo que te esperaba aquí. Esa es probablemente mi parte favorita: imaginar tu cara descubriendo poquito a poquito algo que preparé pensando únicamente en ti. ♡"],
-["Confesión", "Voy a admitir algo: me gusta cuando aparece tu nombre en mi pantalla. Es una tontería pequeña, lo sé. Pero hay personas cuyos mensajes simplemente se sienten diferentes. Y los tuyos son de esos."],
-["Tu manera de ser", "Me gustan esas cosas tuyas que no podrían copiarse aunque alguien quisiera. Tu forma de hablar, de reaccionar, tus ocurrencias y hasta esas pequeñas rarezas que probablemente negarías si te las mencionara. Todo eso junto hace que seas tú. Y esa versión me encanta. ♡"],
-["Tengo un problema contigo", "Te has convertido poco a poco en alguien a quien quiero contarle cosas. Si pasa algo gracioso, pienso que debería decírtelo. Si veo algo bonito, quiero enseñártelo. Y cuando alguien empieza a aparecer en tantos pequeños momentos del día... creo que ya estamos hablando de un problema bastante serio. 😂♡"],
-["Todavía nos faltan momentos", "Hay conversaciones que todavía no hemos tenido, lugares a los que todavía no hemos ido, fotos que todavía no existen y recuerdos que todavía no sabemos que vamos a crear. Y sinceramente, me emociona pensar en todo eso."],
-["Cada vez falta menos", "Ya casi llegamos a tu cumpleaños, pero voy a confesarte algo: esta cuenta regresiva nunca fue solamente por esa fecha. Era una excusa para recordarte durante 21 días consecutivos que eres importante para mí. Y espero que a estas alturas eso haya quedado bastante claro. ♡"],
-["Cuando te miro", "Hay algo muy bonito en mirar a alguien y pensar: qué suerte haber coincidido contigo entre tanta gente, tantos lugares y tantos momentos posibles. Quizás fue casualidad. Quizás no. La verdad es que no me importa demasiado cómo ocurrió. Me alegra que haya ocurrido."],
-["Casi, baby", "Falta poquísimo. Espero que cuando abras cada mensaje hayas sentido aunque sea un poquito del cariño con el que hice todo esto. Porque detrás de cada botón que presionaste había una intención muy sencilla: hacerte sentir especial. Porque para mí lo eres."],
-["A dos días", "Estamos tan cerca que probablemente ya estés esperando qué voy a poner mañana. 😌 Pero hoy solo quiero decirte algo sencillo: gracias por dejarme compartir contigo momentos, conversaciones, risas y pedacitos de tu vida. Espero poder seguir sumando muchos más."],
-["Mañana es tu día", "Llegamos al último mensajito antes de tu cumpleaños. Durante estos 21 días intenté decirte de muchas maneras que eres especial para mí. Mañana podría escribirte mil cosas más, pero hoy quiero dejarte solo una: me alegra muchísimo que la vida haya hecho que tú y yo coincidiéramos. Descansa, baby. Mañana es tu día. ♡"]
+["Para empezar esta cuenta regresiva…","Hoy empieza algo bonito: 21 días para recordarte lo especial que eres. No hace falta una ocasión para celebrarte, pero sí quiero que esta vez sientas, día tras día, lo mucho que mereces."],
+["Tu sonrisa","Ojalá hoy encuentres una razón inesperada para sonreír. Y si el día se pone difícil, recuerda que tu sonrisa tiene una manera única de hacer que todo se sienta un poquito mejor."],
+["Los pequeños detalles","A veces, las cosas más bonitas no hacen ruido: una canción, un abrazo, una conversación o alguien que se acuerda de ti. Hoy deseo que la vida te sorprenda con uno de esos pequeños regalos."],
+["Lo que te hace única","No tienes que parecerte a nadie ni demostrar nada para ser increíble. Hay algo en tu forma de ser que es solamente tuyo, y eso es precisamente lo que te hace tan especial."],
+["Un deseo para ti","Si hoy pudiera pedir algo por ti, pediría tranquilidad para tu mente, alegría para tu corazón y valentía para perseguir eso que llevas tiempo soñando."],
+["Tu manera de iluminar","Hay personas que llegan a un lugar y simplemente están; otras hacen que el lugar se sienta distinto. Tú tienes esa magia de dejar algo bonito incluso después de que el momento termina."],
+["Una semana de sonrisas","Ya pasó una semana de esta cuenta regresiva. Ojalá estos mensajitos te estén recordando algo importante: mereces cariño sincero, palabras bonitas y momentos que te hagan sentir querida."],
+["Que nunca te falte","Que nunca te falten motivos para ilusionarte, personas con las que puedas ser tú misma y días en los que te acuestes pensando: hoy valió la pena."],
+["Tu corazón","Espero que la vida cuide ese corazón tuyo. Que te devuelva multiplicado todo lo bueno que das y que nunca te haga dudar de lo mucho que vales."],
+["Un abrazo en palabras","Si pudiera enviarte algo a través de esta pantalla, sería un abrazo largo, de esos que no necesitan explicaciones y que hacen que por un momento todo esté bien."],
+["Tus sueños","No dejes que el miedo te convenza de hacerte pequeña. Tienes derecho a soñar en grande, cambiar de rumbo, empezar de nuevo y construir una vida que se sienta tuya."],
+["La mitad del camino","¡Ya vamos por la mitad! Cada día que pasa falta menos para celebrarte. Mientras tanto, quiero que recuerdes que tu cumpleaños no es lo único digno de celebración: tú lo eres, también en los días normales."],
+["Un día bonito","Mi deseo para hoy es sencillo: que algo te salga mejor de lo esperado, que te rías hasta que te duela la barriga y que termines el día con el corazón tranquilo."],
+["Tu magia","Tu magia no está en ser perfecta. Está en ser real, en tus ocurrencias, en tus gestos, en tus pequeñas rarezas y en todas esas cosas que te hacen ser tú."],
+["Mereces cosas bonitas","No aceptes tan poquito que termines olvidando todo lo bonito que mereces. Que el amor que llegue a tu vida sea paciente, sincero, respetuoso y alegre."],
+["Un recuerdo por crear","Me gusta pensar en todos los recuerdos bonitos que todavía faltan: las risas inesperadas, las fotos espontáneas y esos momentos sencillos que un día terminan siendo nuestros favoritos."],
+["Cada vez más cerca","Quedan poquitos días. Si pudiera envolver un deseo para ti, llevaría dentro salud, paz, aventuras, amor del bueno y mil razones para sentirte orgullosa de la persona en la que te estás convirtiendo."],
+["Tu felicidad importa","No olvides hacer espacio para ti: para descansar, disfrutar, decir que no cuando lo necesites y elegir lo que te haga bien. Tu felicidad también merece estar entre tus prioridades."],
+["Un poquito de emoción","¿Sientes que ya falta menos? Yo quería que esta espera tuviera detalles, que cada día guardara unas palabras para ti y que llegaras a tu cumpleaños sabiendo que eres alguien digno de celebrar."],
+["A dos días","Ya casi llega tu día. Espero que este nuevo año te acerque a lo que deseas y te aleje de todo lo que te quite paz. Que tengas motivos reales para sentirte feliz, libre y querida."],
+["Mañana es tu día","Mañana celebramos tu existencia, tu historia y todo lo bonito que aún te espera. Guarda un espacio para la ilusión, porque hoy termina la espera y mañana empieza tu momento. ♡"]
 ];
 
 const grid = document.getElementById("dayGrid");
